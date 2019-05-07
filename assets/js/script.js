@@ -18,7 +18,7 @@ function newgame (){
 		}
 	}
 	nombrejoueur = 1;
-	affichetexteannonce("Le jeu commence ! C'est au tour du joueur "+nomdujoueur(nombrejoueur));
+	affichetexteannonce("Le jeu commence ! C'est au tour du joueur " +nomdujoueur(nombrejoueur));
 	jeu = true;
 	creerTableau();
 	}
@@ -56,22 +56,24 @@ function creerTableau(){
     tableau.innerHTML = texte;
 }
 
-function detecteClick (j){
+function detecteClick(j){
 	if (verifposition(j) == true && jeu == true){
 		var ligneencours = posejeton(j);
 		var verifend = puissance4(ligneencours, j, 0, 0);
 		if (verifend == true) {
 			jeu = false;
-			affichetexteannonce("Le joueur "+nomdujoueur(joueur)+ " a gagné la partie.");
-			}else if (joueur == 1){
-				joueur = 2;
-				 	}
-				 	else (joueur == 2){
-				 		joueur = 1;
-				 	}
-				}
-			affichetexteannonce("C'est au tour du jeu "+nomdujoueur(joueur));
-					}
+			affichetexteannonce("Le joueur "+nomdujoueur(nombrejoueur)+ " a gagné la partie.");
+		}else{
+			 if (nombrejoueur == 1){
+				nombrejoueur = 2;
+			}else {
+				nombrejoueur = 1;
+			}
+			affichetexteannonce("C'est au tour du jeu "+nomdujoueur(nombrejoueur));
+		}
+			
+		}
+}
 		
 
 function verifposition(j){
@@ -83,19 +85,20 @@ function verifposition(j){
 }
 
 function posejeton(j){
-	for (i=lignes -1; i >=0 ; i--){
+	for (var i = lignes -1; i >=0 ; i--){
 		if (plateau[i][j] == 0){
-			var plateau[i][j] = joueur(refreshtableau[i][j][joueur])
-			return [i];
+			plateau[i][j] = nombrejoueur;
+			refreshtableau(i, j, nombrejoueur);
+			return i;
 			}
 		}
 }
 
 function refreshtableau (x, y, i){
-	document.getElementById(x-y).innerHTML = '<div class="joueur"'+i+'></div>';
+	document.getElementById(x+'-'+y).innerHTML = '<div class="joueur'+i+'"></div>';
 }
 
-function puissance4 (lignes, colonnes, l, c){
-	console.log('valeur : '+lignes+' '+colonnes+' / increment '+l+' '+c+' )
+function puissance4(lignes, colonnes, l, c){
+	console.log('valeur : '+lignes+' '+colonnes+' / increment '+l+' '+c+'');
 	return false;
 }
