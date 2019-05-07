@@ -34,3 +34,23 @@ function nomdujoueur(numerojoueur){
 			alert("bleu")
 		}
 }
+
+function creertableau(){
+	<table>
+	for (i=0 ; lignes['i'][0]; i++){
+			for (j=0 ; colonnes['j'][0]; j++)<tr>{
+				texte = <td> onclick="detectclic(j)", [id]_[i][j];{
+					if (plateau [i][j]== 1){
+						<div class="joueur1"></div>
+					}elseif{
+						if (plateau [i][j]== 2){
+						<div class=joueur2></div>
+					}
+					texte = </td>
+				texte = </tr>
+	</table>
+		document.getElementsbyid(Puissance4).innerHTML;
+				}
+			}
+	}
+}
