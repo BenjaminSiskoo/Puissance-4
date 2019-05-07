@@ -24,7 +24,7 @@ function newgame (){
 	}
 
 function affichetexteannonce(texte){
-	document.getElementById("texteannonce").innerHTML = texte;
+	document.getElementById('texteannonce').innerHTML = texte;
 }
 
 function nomdujoueur(nombrejoueur){
