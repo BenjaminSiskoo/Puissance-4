@@ -7,28 +7,28 @@ var plateau = [];
 
 
 for (var i = 0; i < lignes; i++) {
-  plateau[i] = 0;
+  plateau[i] = [];
 }
 newgame();
 
 function newgame (){
 	for (var i = 0; i < lignes; i++){
 		for (var j = 0; j < colonnes; j++){
-			plateau [i][j]= 0;
+			plateau[i][j]= 0;
 		}
 	}
 	nombrejoueur = 1;
 	affichetexteannonce("Le jeu commence ! C'est au tour du joueur"+nomdujoueur(nombrejoueur));
 	jeu = true;
-	creertableau();
+	creerTableau();
 	}
 
-function affichetexteannonce(ptexte){
-	document.getElementById("texteannonce").innerHTML = ptexte;
+function affichetexteannonce(texte){
+	document.getElementById("texteannonce").innerHTML = texte;
 }
 
-function nomdujoueur(numjoueur){
-	if (numjoueur == 1){
+function nomdujoueur(nombrejoueur){
+	if (nombrejoueur == 1){
 		return "rouge";
 	}else{
 		return "bleu";
