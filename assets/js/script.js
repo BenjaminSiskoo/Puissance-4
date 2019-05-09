@@ -124,7 +124,7 @@ function Puissance4(lig, col, l, c){
 				return false;
 			}
 	
-		if(lig < this.ligne && lig >=0 && col < this.colonne && col >=0){
+		if(lig < this.lignes && lig >=0 && col < this.colonnes && col >=0){
 			console.log("recursive Valeurs : " + lig + " "+ col +" / Incrément " + l + " "+ c);
 			if(this.plateau[lig][col] == this.joueur){
 				//console.log("ok")
