@@ -118,7 +118,7 @@ function puissance4(lig, col, l, c){
 			}else {
 				return false;
 			}
-	
+	 	}
 		if(lig < this.lignes && lig >=0 && col < this.colonnes && col >=0){
 			console.log("recursive Valeurs : " + lig + " "+ col +" / Incrément " + l + " "+ c);
 			if(this.plateau[lig][col] == this.nombrejoueur){
@@ -126,9 +126,9 @@ function puissance4(lig, col, l, c){
 				return 1 + puissance4(lig + l, col + c, l, c);
 			}else{
 				//console.log("pas ok")
-			}
 				return 0;
 			}
+
+			}
+				return 0;
 		}
-		return 0;
-}
