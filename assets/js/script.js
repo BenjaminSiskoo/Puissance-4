@@ -38,9 +38,9 @@ function nomdujoueur(nombrejoueur){
 function creerTableau(){
 
     texte = '<table>';
-    for (i = 0; i < lignes; i++) {
+    for (var i = 0; i < lignes; i++) {
         texte += '<tr>';
-        for (j = 0; j < colonnes; j++) {
+        for (var j = 0; j < colonnes; j++) {
             texte += '<td onclick="detecteClick('+j+')" id="'+i+'-'+j+'">';
             if(plateau[i][j] == 1){
                 texte += '<div class="joueur1">';
@@ -97,25 +97,20 @@ function refreshtableau (x, y, i){
 	document.getElementById(x+'-'+y).innerHTML = '<div class="joueur'+i+'"></div>';
 }
 
-function puissance4(lignes, colonnes, l, c){
-	console.log('valeur : '+lignes+' '+colonnes+' / increment '+l+' '+c+'');
-	return false;
-}
-
 //Puissance4(4, 2, 0 ,0)
 //Puissance4(4, 1, 0, -1)
 
-function Puissance4(lig, col, l, c){
+function puissance4(lig, col, l, c){
 		if(c == 0 && l == 0){
-			console.log(("initial Valeurs : " + lig + " " + col + " /Incrément "+ l +" "+ c);
+			console.log("initial Valeurs : " + lig + " " + col + " /Incrément "+ l +" "+ c);
 			//horizontal
-			var a = 1 + Puissance4(lig, col-1, 0, -1) + Puissance4(lig, col+1, 0, 1);
+			var va = 1 + puissance4(lig, col-1, 0, -1) + puissance4(lig, col+1, 0, 1);
 			//Vertical
-			var a = 1 + Puissance4(lig-1, col, -1, 0) + Puissance4(lig+1, col, 1, 0);
+			var vb = 1 + puissance4(lig-1, col, -1, 0) + puissance4(lig+1, col, 1, 0);
 			//Diagonal Gauche
-			var a = 1 + Puissance4(lig-1, col-1, -1, -1) + Puissance4(lig +1, col +1, 1 , 1);
+			var vc = 1 + puissance4(lig-1, col-1, -1, -1) + puissance4(lig+1, col+1, 1 , 1);
 			//Diagonal Droite
-			var a = 1 + Puissance4(lig-1, col+1, -1, 1) + Puissance4(lig+1, col-1, 1, -1);
+			var vd = 1 + puissance4(lig-1, col+1, -1, 1) + puissance4(lig+1, col-1, 1, -1);
 
 			console.log(va,vb,vc,vd);
 			if(va >= 4 || vb >= 4 || vc >= 4 || vd >= 4){
@@ -126,14 +121,14 @@ function Puissance4(lig, col, l, c){
 	
 		if(lig < this.lignes && lig >=0 && col < this.colonnes && col >=0){
 			console.log("recursive Valeurs : " + lig + " "+ col +" / Incrément " + l + " "+ c);
-			if(this.plateau[lig][col] == this.joueur){
+			if(this.plateau[lig][col] == this.nombrejoueur){
 				//console.log("ok")
-				return 1 + Puissance4(lig + l,col + c, l, c);
+				return 1 + puissance4(lig + l, col + c, l, c);
 			}else{
 				//console.log("pas ok")
 			}
 				return 0;
-		}
+			}
 		}
 		return 0;
 }
