@@ -73,8 +73,7 @@ function detecteClick(j){
 		}
 			
 		}
-}
-		
+}		
 
 function verifposition(j){
 	if (plateau[0][j] == 0){
@@ -101,4 +100,40 @@ function refreshtableau (x, y, i){
 function puissance4(lignes, colonnes, l, c){
 	console.log('valeur : '+lignes+' '+colonnes+' / increment '+l+' '+c+'');
 	return false;
+}
+
+//Puissance4(4, 2, 0 ,0)
+//Puissance4(4, 1, 0, -1)
+
+function Puissance4(lig, col, l, c){
+		if(c == 0 && l == 0){
+			console.log(("initial Valeurs : " + lig + " " + col + " /Incrément "+ l +" "+ c);
+			//horizontal
+			var a = 1 + Puissance4(lig, col-1, 0, -1) + Puissance4(lig, col+1, 0, 1);
+			//Vertical
+			var a = 1 + Puissance4(lig-1, col, -1, 0) + Puissance4(lig+1, col, 1, 0);
+			//Diagonal Gauche
+			var a = 1 + Puissance4(lig-1, col-1, -1, -1) + Puissance4(lig +1, col +1, 1 , 1);
+			//Diagonal Droite
+			var a = 1 + Puissance4(lig-1, col+1, -1, 1) + Puissance4(lig+1, col-1, 1, -1);
+
+			console.log(va,vb,vc,vd);
+			if(va >= 4 || vb >= 4 || vc >= 4 || vd >= 4){
+				return true;
+			}else {
+				return false;
+			}
+	
+		if(lig < this.ligne && lig >=0 && col < this.colonne && col >=0){
+			console.log("recursive Valeurs : " + lig + " "+ col +" / Incrément " + l + " "+ c);
+			if(this.plateau[lig][col] == this.joueur){
+				//console.log("ok")
+				return 1 + Puissance4(lig + l,col + c, l, c);
+			}else{
+				//console.log("pas ok")
+			}
+				return 0;
+		}
+		}
+		return 0;
 }
